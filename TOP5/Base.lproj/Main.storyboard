@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="TOP5" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kf6-Ka-z0M">
+                                <rect key="frame" x="20" y="548" width="560" height="30"/>
+                                <state key="normal" title="Log in with Email"/>
+                                <connections>
+                                    <action selector="emailLoginButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0yd-hJ-PdE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYc-tg-kvl">
+                                <rect key="frame" x="20" y="512" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.98490274464699012" green="1" blue="0.28897270984013423" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Log in through Facebook">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookLoginButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="iuG-3e-Mxt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="kf6-Ka-z0M" secondAttribute="bottom" constant="22" id="0LF-um-JUR"/>
+                            <constraint firstItem="kf6-Ka-z0M" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="8bk-tf-7bj"/>
+                            <constraint firstItem="kf6-Ka-z0M" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="bb2-SY-iou"/>
+                            <constraint firstItem="kf6-Ka-z0M" firstAttribute="top" secondItem="FYc-tg-kvl" secondAttribute="bottom" constant="6" id="gEK-lb-DNt"/>
+                            <constraint firstItem="kf6-Ka-z0M" firstAttribute="leading" secondItem="FYc-tg-kvl" secondAttribute="leading" id="n63-Hl-k5i"/>
+                            <constraint firstItem="kf6-Ka-z0M" firstAttribute="trailing" secondItem="FYc-tg-kvl" secondAttribute="trailing" id="uUR-Wu-H5D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailLoginButton" destination="kf6-Ka-z0M" id="b7S-xJ-E7z"/>
+                        <outlet property="facebookLoginButton" destination="FYc-tg-kvl" id="4f8-Kg-6nD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="537" y="625"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Q8N-9d-ejC">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="BSO-PO-y8F" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mA-59-5VX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="288"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="jve-Wz-0pI">
+            <objects>
+                <viewController storyboardIdentifier="ContentViewController" id="pUk-FH-FIE" customClass="WelcomeViewController" customModule="TOP5" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OwY-gh-VIv"/>
+                        <viewControllerLayoutGuide type="bottom" id="LSq-br-inI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wbb-tZ-DWM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTc-Em-XFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1227" y="943"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RLI-0b-t05">
+            <objects>
+                <viewController id="LYU-GX-H8Z" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="om2-9a-xjA"/>
+                        <viewControllerLayoutGuide type="bottom" id="cDb-Q9-Yjd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lrg-pf-zom">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JcB-kp-vGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1855" y="943"/>
+        </scene>
+    </scenes>
+</document>
