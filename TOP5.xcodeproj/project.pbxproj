@@ -14,7 +14,6 @@
 		7F229ADA1B811A2F00F81CE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F229AD91B811A2F00F81CE0 /* Images.xcassets */; };
 		7F229ADD1B811A2F00F81CE0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F229ADB1B811A2F00F81CE0 /* LaunchScreen.xib */; };
 		7F229AE91B811A3000F81CE0 /* TOP5Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F229AE81B811A3000F81CE0 /* TOP5Tests.swift */; };
-		8E937DD61BB35A2800C7A2A6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E937DD51BB35A2800C7A2A6 /* OnboardingViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +38,6 @@
 		7F229AE21B811A2F00F81CE0 /* TOP5Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOP5Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F229AE71B811A3000F81CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F229AE81B811A3000F81CE0 /* TOP5Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOP5Tests.swift; sourceTree = "<group>"; };
-		8E937DD51BB35A2800C7A2A6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +83,6 @@
 				7F229AD41B811A2F00F81CE0 /* ViewController.swift */,
 				7F229AD61B811A2F00F81CE0 /* Main.storyboard */,
 				7F1C26F61BA25CD10009866D /* WelcomeViewController.swift */,
-				8E937DD51BB35A2800C7A2A6 /* OnboardingViewController.swift */,
 				7F229AD91B811A2F00F81CE0 /* Images.xcassets */,
 				7F229ADB1B811A2F00F81CE0 /* LaunchScreen.xib */,
 				7F229AD01B811A2F00F81CE0 /* Supporting Files */,
@@ -223,7 +220,6 @@
 				7F1C26F71BA25CD10009866D /* WelcomeViewController.swift in Sources */,
 				7F229AD51B811A2F00F81CE0 /* ViewController.swift in Sources */,
 				7F229AD31B811A2F00F81CE0 /* AppDelegate.swift in Sources */,
-				8E937DD61BB35A2800C7A2A6 /* OnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
