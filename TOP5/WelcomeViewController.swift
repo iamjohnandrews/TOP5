@@ -63,8 +63,8 @@ public class WelcomeViewController: UIViewController {
         moreDetails.numberOfLines = 0
         moreDetails.lineBreakMode = NSLineBreakMode.ByWordWrapping
         
-//        moreDetails.layer.borderWidth = 2
-//        moreDetails.layer.borderColor = UIColor.redColor().CGColor
+        moreDetails.layer.borderWidth = 2
+        moreDetails.layer.borderColor = UIColor.redColor().CGColor
 
         let topBaseString = inText as NSString
         let topAttributedString = NSMutableAttributedString(string: topBaseString as String)
@@ -81,9 +81,9 @@ public class WelcomeViewController: UIViewController {
         subDetails.lineBreakMode = NSLineBreakMode.ByWordWrapping
         subDetails.font = UIFont.systemFontOfSize(15)
         
-//        subDetails.layer.borderWidth = 2
-//        subDetails.layer.borderColor = UIColor.blueColor().CGColor
-        
+        subDetails.layer.borderWidth = 2
+        subDetails.layer.borderColor = UIColor.blueColor().CGColor
+
         view.addSubview(subDetails)
         view.addSubview(moreDetails)
     }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
@@ -42,6 +44,10 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         setUpLogoTextOnPage1(index)
         emailLoginButton.layer.borderColor = UIColor.blackColor().CGColor
         emailLoginButton.layer.borderWidth = 1
+
+        let fbButton = FBSDKLoginButton()
+        fbButton.center = CGPointMake(view.center.x, facebookLoginButton.center.y - 40)
+        view.addSubview(fbButton)
     }
 
     // MARK: Onboarding
