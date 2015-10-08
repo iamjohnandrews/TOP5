@@ -12,14 +12,14 @@ import FBSDKLoginKit
 
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    public var pageViewController: UIPageViewController!
+    var pageViewController: UIPageViewController!
     var pageTitles: [String]!
-    public var genericLabel = UILabel()
+    var genericLabel = UILabel()
     var index = 0
     
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var emailLoginButton: UIButton!
-     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pageTitles = ["page1", "page2", "page3", "page4", "page5"]
