@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, FBSDKLoginButtonDelegate {
     
     var pageViewController: UIPageViewController!
     var pageTitles: [String]!
@@ -48,6 +48,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         let fbButton = FBSDKLoginButton()
         fbButton.center = CGPointMake(view.center.x, facebookLoginButton.center.y - 40)
         view.addSubview(fbButton)
+        fbButton.readPermissions = ["public_profile", "email", "user_friends"]
+        fbButton.delegate = self
     }
 
     // MARK: Onboarding
@@ -99,6 +101,59 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     }
 
     @IBAction func facebookLoginButtonAction(sender: AnyObject) {
+        let fbLogin = FBSDKLoginManager()
+        fbLogin.logInWithReadPermissions(["public_profile", "email", "user_friends"], fromViewController: self)  { (result:FBSDKLoginManagerLoginResult!, error:NSError!) -> Void in
+            print("whats Facebook returns \(result.declinedPermissions) and \(result.grantedPermissions) for token \(result.token.userID)")
+            if error != nil {
+                //According to Facebook:
+                //Errors will rarely occur in the typical login flow because the login dialog
+                //presented by Facebook via single sign on will guide the users to resolve any errors.
+                print("Error = \(error)")
+                FBSDKLoginManager().logOut()
+                
+            } else if result.isCancelled {
+                print("Login was cancelled")
+                FBSDKLoginManager().logOut()
+                
+            } else if let declinedByUser = result.declinedPermissions {
+                print("User declined Permission to \(declinedByUser)")
+                
+            } else if let grantedByUser = result.grantedPermissions {
+                print("User granted access to \(grantedByUser)")
+                
+            }
+        }
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("whats Facebook returns \(result.declinedPermissions) and \(result.grantedPermissions) for token \(result.token.userID)")
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            print("Login was cancelled")
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.count > 0
+            {
+                print("User granted access to \(result.grantedPermissions)")
+
+                // Do work
+            }
+            if result.declinedPermissions.count > 0
+            {
+                print("User declined access to \(result.declinedPermissions)")
+                
+                // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
     }
    
     // MARK: Onboarding Views UI Set Up
