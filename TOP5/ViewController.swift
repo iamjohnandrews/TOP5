@@ -10,12 +10,20 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+let userFBDetails = "userFBDetails"
+let userFBFirstName = "userFBFirstName"
+let userFBLastName = "userFBLastName"
+let userFBemail = "userFBemail"
+let userFBProfilePictureURL = "userFBProfilePictureURL"
+let userFBBirthday = "userFBBirthday"
+
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, FBSDKLoginButtonDelegate {
     
     var pageViewController: UIPageViewController!
     var pageTitles: [String]!
     var genericLabel = UILabel()
     var index = 0
+    internal let fetchedFromFB: NSMutableDictionary = NSMutableDictionary()
     
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var emailLoginButton: UIButton!
@@ -45,16 +53,15 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         emailLoginButton.layer.borderColor = UIColor.blackColor().CGColor
         emailLoginButton.layer.borderWidth = 1
 
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            // User is already logged in, do work such as go to next view controller.
-        } else {
+//        if (FBSDKAccessToken.currentAccessToken() != nil) {
+//            // User is already logged in, do work such as go to next view controller.
+//        } else {
             let fbButton = FBSDKLoginButton()
             fbButton.center = CGPointMake(view.center.x, facebookLoginButton.center.y - 40)
             view.addSubview(fbButton)
-            fbButton.readPermissions = ["public_profile", "picture.type(normal)", "email", "user_birthday"]
+            fbButton.readPermissions = ["public_profile", "email", "user_birthday"]
             fbButton.delegate = self
-        }
+        
     }
 
     // MARK: Onboarding
@@ -106,37 +113,15 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     }
 
     @IBAction func facebookLoginButtonAction(sender: AnyObject) {
-        let fbLogin = FBSDKLoginManager()
-        fbLogin.logInWithReadPermissions(["public_profile", "picture.type(normal)", "email", "user_birthday"], fromViewController: self)  { (result:FBSDKLoginManagerLoginResult!, error:NSError!) -> Void in
-            print("whats Facebook returns \(result.declinedPermissions) and \(result.grantedPermissions) for token \(result.token.userID)")
-            if error != nil {
-                //According to Facebook:
-                //Errors will rarely occur in the typical login flow because the login dialog
-                //presented by Facebook via single sign on will guide the users to resolve any errors.
-                print("Error = \(error)")
-                FBSDKLoginManager().logOut()
-                
-            } else if result.isCancelled {
-                print("Login was cancelled")
-                FBSDKLoginManager().logOut()
-                
-            } else if let declinedByUser = result.declinedPermissions {
-                print("User declined Permission to \(declinedByUser)")
-                
-            } else if let grantedByUser = result.grantedPermissions {
-                print("User granted access to \(grantedByUser)")
-                self.returnUserData()
-//                prepareSignUpVC(grantedByUser.allObjects as NSArray)
-            }
-        }
+
     }
     
-    func prepareSignUpVC(facebookStuff: [AnyObject]) {
-        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        _ = SignUpViewController(FBdetails: fetchedFromFB)        
     }
     
     func returnUserData() {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, first_name, last_name, birthday, email, picture"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if ((error) != nil) {
@@ -144,21 +129,29 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
                 print("Error: \(error)")
             } else {
                 print("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                print("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
-                print("User Email is: \(userEmail)")
-                let birthday : NSString = result.valueForKey("user_birthday") as! NSString
-                print("User birthday is: \(birthday)")
-                let profile : NSDictionary = result.valueForKey("public_profile") as! NSDictionary
-                print("User profile is: \(profile)")
+                let picture: NSDictionary = result.valueForKey("picture") as! NSDictionary
+                let data: NSDictionary = picture.valueForKey("data") as! NSDictionary
+                let url: NSString = data.valueForKey("url") as! NSString
+                
+                self.fetchedFromFB[userFBBirthday] = result.valueForKey("birthday") as! NSString
+                self.fetchedFromFB[userFBFirstName] = result.valueForKey("first_name") as! NSString
+                self.fetchedFromFB[userFBLastName] = result.valueForKey("last_name") as! NSString
+                self.fetchedFromFB[userFBemail] = result.valueForKey("email") as! NSString
+                self.fetchedFromFB[userFBProfilePictureURL] = url
             }
         })
+        if NSUserDefaults.standardUserDefaults().valueForKey(userFBDetails) == nil {
+            NSUserDefaults.standardUserDefaults().setValue(fetchedFromFB, forKey: userFBDetails)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        dispatch_async(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("signUpSegue", sender: self)
+        }
     }
 
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("whats Facebook returns \(result.declinedPermissions) and \(result.grantedPermissions) for token \(result.token.userID)")
+//        print("whats Facebook returns \(result.declinedPermissions) and \(result.grantedPermissions) for token \(result.token.userID)")
         if ((error) != nil)
         {
             // Process error
@@ -172,7 +165,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             if result.grantedPermissions.count > 0
             {
                 print("User granted access to \(result.grantedPermissions)")
-
+                returnUserData()
                 // Do work
             }
             if result.declinedPermissions.count > 0

@@ -12,7 +12,7 @@ import UIKit
 class SignUpViewController: UIViewController {
     let topLineWidth: CGFloat = 4.0
     let regularLineWidth: CGFloat = 2.0
-
+    
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var firstName: UILabel!
     
@@ -30,14 +30,41 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var editButton: UIButton!
     
-    
     @IBAction func editButtonPressed(sender: UIButton) {
     }
+    
+    var userInfo = NSDictionary()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         drawLines()
+    
+    }
+    
+    init(FBdetails: NSDictionary){
+        super.init(nibName: nil, bundle: nil)
+        userInfo = FBdetails
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
         
+        if let first: String = userInfo[userFBFirstName] as? String {
+            firstName.text = first
+        }
+        if let last: String = userInfo[userFBLastName] as? String {
+            lastName.text = last
+        }
+        if let email: String = userInfo[userFBemail] as? String {
+            emailLabel.text = email
+        }
+        if let bday: String = userInfo[userFBBirthday] as? String {
+            birthday.text = bday
+        }
     }
     
     private func drawLines() {
