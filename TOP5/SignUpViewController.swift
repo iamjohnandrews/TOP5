@@ -14,23 +14,25 @@ class SignUpViewController: UIViewController {
     let regularLineWidth: CGFloat = 2.0
     
     @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var firstName: UILabel!
+    @IBOutlet weak var firstName: UITextField!
     
-    @IBOutlet weak var lastName: UILabel!
+    @IBOutlet weak var lastName: UITextField!
     
-    @IBOutlet weak var birthday: UILabel!
+    @IBOutlet weak var birthday: UITextField!
     
     @IBOutlet weak var maleLabel: UILabel!
     
     @IBOutlet weak var femaleLabel: UILabel!
     
-    @IBOutlet weak var detailLabel: UILabel!
-    
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var email: UITextField!
     
     @IBOutlet weak var editButton: UIButton!
     
     @IBAction func editButtonPressed(sender: UIButton) {
+        firstName.userInteractionEnabled = true
+        lastName.userInteractionEnabled = true
+        birthday.userInteractionEnabled = true
+        email.userInteractionEnabled = true
     }
     
     var userInfo = NSDictionary()
@@ -38,6 +40,10 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawLines()
+        firstName.userInteractionEnabled = false
+        lastName.userInteractionEnabled = false
+        birthday.userInteractionEnabled = false
+        email.userInteractionEnabled = false
     
     }
     
@@ -59,8 +65,8 @@ class SignUpViewController: UIViewController {
         if let last: String = userInfo[userFBLastName] as? String {
             lastName.text = last
         }
-        if let email: String = userInfo[userFBemail] as? String {
-            emailLabel.text = email
+        if let emailString: String = userInfo[userFBemail] as? String {
+            email.text = emailString
         }
         if let bday: String = userInfo[userFBBirthday] as? String {
             birthday.text = bday
@@ -68,44 +74,61 @@ class SignUpViewController: UIViewController {
     }
     
     private func drawLines() {
-        UIColor.blackColor().setStroke()
+        let lineColor = UIColor.blackColor()
 
         let topLine = UIBezierPath()
-        topLine.lineWidth = topLineWidth
         topLine.moveToPoint(CGPointMake(topLabel.frame.origin.x, topLabel.frame.origin.y))
         topLine.addLineToPoint(CGPointMake(topLabel.frame.origin.x + topLabel.frame.size.width, topLabel.frame.origin.y))
-        topLine.stroke()
+        let topLineShapeLayer = CAShapeLayer()
+        topLineShapeLayer.path = topLine.CGPath
+        topLineShapeLayer.strokeColor = lineColor.CGColor
+        topLineShapeLayer.lineWidth = topLineWidth
+        view.layer.addSublayer(topLineShapeLayer)
         
         let secondLine = UIBezierPath()
-        secondLine.lineWidth = regularLineWidth
         secondLine.moveToPoint(CGPointMake(topLabel.frame.origin.x, topLabel.frame.origin.y + topLabel.frame.size.height))
         secondLine.addLineToPoint(CGPointMake(topLabel.frame.origin.x + topLabel.frame.size.width, topLabel.frame.origin.y + topLabel.frame.size.height))
-        secondLine.stroke()
+        let secondLineShapeLayer = CAShapeLayer()
+        secondLineShapeLayer.path = secondLine.CGPath
+        secondLineShapeLayer.strokeColor = lineColor.CGColor
+        secondLineShapeLayer.lineWidth = regularLineWidth
+        view.layer.addSublayer(secondLineShapeLayer)
         
         let thirdLine = UIBezierPath()
-        thirdLine.lineWidth = regularLineWidth
-        thirdLine.moveToPoint(CGPointMake(emailLabel.frame.origin.x, emailLabel.frame.origin.y))
-        thirdLine.addLineToPoint(CGPointMake(emailLabel.frame.origin.x + emailLabel.frame.size.width, emailLabel.frame.origin.y))
-        thirdLine.stroke()
+        thirdLine.moveToPoint(CGPointMake(email.frame.origin.x, email.frame.origin.y))
+        thirdLine.addLineToPoint(CGPointMake(email.frame.origin.x + email.frame.size.width, email.frame.origin.y))
+        let thirdLineShapeLayer = CAShapeLayer()
+        thirdLineShapeLayer.path = thirdLine.CGPath
+        thirdLineShapeLayer.strokeColor = lineColor.CGColor
+        thirdLineShapeLayer.lineWidth = regularLineWidth
+        view.layer.addSublayer(thirdLineShapeLayer)
         
         let fourthLine = UIBezierPath()
-        fourthLine.lineWidth = regularLineWidth
-        fourthLine.moveToPoint(CGPointMake(emailLabel.frame.origin.x, emailLabel.frame.origin.y + emailLabel.frame.size.height))
-        fourthLine.addLineToPoint(CGPointMake(emailLabel.frame.origin.x + emailLabel.frame.size.width, emailLabel.frame.origin.y + emailLabel.frame.size.height))
-        fourthLine.stroke()
-   
+        fourthLine.moveToPoint(CGPointMake(email.frame.origin.x, email.frame.origin.y + email.frame.size.height))
+        fourthLine.addLineToPoint(CGPointMake(email.frame.origin.x + email.frame.size.width, email.frame.origin.y + email.frame.size.height))
+        let fourthLineShapeLayer = CAShapeLayer()
+        fourthLineShapeLayer.path = fourthLine.CGPath
+        fourthLineShapeLayer.strokeColor = lineColor.CGColor
+        fourthLineShapeLayer.lineWidth = regularLineWidth
+        view.layer.addSublayer(fourthLineShapeLayer)
+        
         let fifthLine = UIBezierPath()
-        fifthLine.lineWidth = regularLineWidth
         fifthLine.moveToPoint(CGPointMake(birthday.frame.origin.x, birthday.frame.origin.y + birthday.frame.size.height))
-        fifthLine.addLineToPoint(CGPointMake(birthday.frame.origin.x + emailLabel.frame.size.width, birthday.frame.origin.y + birthday.frame.size.height))
-        fifthLine.stroke()
+        fifthLine.addLineToPoint(CGPointMake(birthday.frame.origin.x + email.frame.size.width, birthday.frame.origin.y + birthday.frame.size.height))
+        let fifthLineShapeLayer = CAShapeLayer()
+        fifthLineShapeLayer.path = fifthLine.CGPath
+        fifthLineShapeLayer.strokeColor = lineColor.CGColor
+        fifthLineShapeLayer.lineWidth = regularLineWidth
+        view.layer.addSublayer(fifthLineShapeLayer)
         
         let sixthLine = UIBezierPath()
-        sixthLine.lineWidth = regularLineWidth
         sixthLine.moveToPoint(CGPointMake(maleLabel.frame.origin.x, maleLabel.frame.origin.y + maleLabel.frame.size.height))
-        sixthLine.addLineToPoint(CGPointMake(maleLabel.frame.origin.x + emailLabel.frame.size.width, maleLabel.frame.origin.y + maleLabel.frame.size.height))
-        sixthLine.stroke()
-        
+        sixthLine.addLineToPoint(CGPointMake(maleLabel.frame.origin.x + email.frame.size.width, maleLabel.frame.origin.y + maleLabel.frame.size.height))
+        let sixthLineShapeLayer = CAShapeLayer()
+        sixthLineShapeLayer.path = sixthLine.CGPath
+        sixthLineShapeLayer.strokeColor = lineColor.CGColor
+        sixthLineShapeLayer.lineWidth = regularLineWidth
+        view.layer.addSublayer(sixthLineShapeLayer)
     }
     
     
