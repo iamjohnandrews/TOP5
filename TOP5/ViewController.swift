@@ -64,24 +64,38 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+       let titleString = getLogoTextForFontSize(20, andColor: UIColor.whiteColor())
+        let logoLabel = UILabel(frame: CGRectMake(0, 0, 50, 25))
+        logoLabel.textAlignment = .Center
+        logoLabel.attributedText = titleString
+        
+        navigationItem.titleView = logoLabel
+    }
+    internal func getLogoTextForFontSize(fontSize: CGFloat, andColor textColor: UIColor) -> NSMutableAttributedString {
+        let baseString = "TopFIVE" as NSString
+        let attributedString = NSMutableAttributedString(string: baseString as String)
+        
+        let thinFont = UIFont(name: "HelveticaNeue-Thin", size: fontSize)!
+        let thinAttribute = [NSFontAttributeName: thinFont]
+        let boldAttribute = [NSFontAttributeName : UIFont.boldSystemFontOfSize(fontSize)]
+        let colorAttribute = [NSForegroundColorAttributeName: textColor]
+        attributedString.addAttributes(boldAttribute, range: baseString.rangeOfString("FIVE"))
+        attributedString.addAttributes(thinAttribute, range: baseString.rangeOfString("Top"))
+        attributedString.addAttributes(colorAttribute, range: baseString.rangeOfString("TopFIVE"))
+
+        return attributedString
+    }
+    
     // MARK: Onboarding
     private func setUpLogoTextOnPage1(pageIndex: Int) {
         genericLabel.frame = CGRectMake(50, 50, 400, 200)
         genericLabel.textAlignment = NSTextAlignment.Center
         genericLabel.font = genericLabel.font.fontWithSize(80)
-        
         genericLabel.center = CGPointMake(view.center.x, view.center.y - 100)
-        
-        let baseString = "TopFIVE" as NSString
-        let attributedString = NSMutableAttributedString(string: baseString as String)
-        
-        let thinFont = UIFont(name: "HelveticaNeue-Thin", size: 80)!
-        let thinAttribute = [NSFontAttributeName: thinFont]
-        let boldAttribute = [NSFontAttributeName : UIFont.boldSystemFontOfSize(80)]
-        attributedString.addAttributes(boldAttribute, range: baseString.rangeOfString("FIVE"))
-        attributedString.addAttributes(thinAttribute, range: baseString.rangeOfString("Top"))
-        
-        genericLabel.attributedText = attributedString
+        genericLabel.attributedText = getLogoTextForFontSize(80, andColor: UIColor.blackColor())
         
         view.addSubview(genericLabel)
     }
@@ -107,6 +121,16 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         }
         numberAttributedString.addAttributes(boldAttribute, range: numberString.rangeOfString(numberString as String))
                 genericLabel.attributedText = numberAttributedString
+        
+        
+        let belowNumbersLine = UIBezierPath()
+        belowNumbersLine.moveToPoint(CGPointMake(view.frame.origin.x + 10, genericLabel.frame.origin.y + genericLabel.frame.size.height))
+        belowNumbersLine.addLineToPoint(CGPointMake(view.frame.origin.x + view.frame.size.width - 20, genericLabel.frame.origin.y + genericLabel.frame.size.height))
+        let belowNumbersLineShapeLayer = CAShapeLayer()
+        belowNumbersLineShapeLayer.path = belowNumbersLine.CGPath
+        belowNumbersLineShapeLayer.strokeColor = UIColor.blackColor().CGColor
+        belowNumbersLineShapeLayer.lineWidth = 5
+        view.layer.addSublayer(belowNumbersLineShapeLayer)
     }
     
     @IBAction func emailLoginButtonAction(sender: AnyObject) {
