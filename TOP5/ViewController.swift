@@ -30,6 +30,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBarHidden = true
+        
         pageTitles = ["page1", "page2", "page3", "page4", "page5"]
 
         pageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
@@ -64,17 +66,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        
-       let titleString = getLogoTextForFontSize(20, andColor: UIColor.whiteColor())
-        let logoLabel = UILabel(frame: CGRectMake(0, 0, 50, 25))
-        logoLabel.textAlignment = .Center
-        logoLabel.attributedText = titleString
-        
-        navigationItem.titleView = logoLabel
-    }
-    internal func getLogoTextForFontSize(fontSize: CGFloat, andColor textColor: UIColor) -> NSMutableAttributedString {
+    func getLogoTextForFontSize(fontSize: CGFloat, andColor textColor: UIColor) -> NSMutableAttributedString {
         let baseString = "TopFIVE" as NSString
         let attributedString = NSMutableAttributedString(string: baseString as String)
         

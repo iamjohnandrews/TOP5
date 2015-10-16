@@ -44,7 +44,8 @@ class SignUpViewController: UIViewController {
         lastName.userInteractionEnabled = false
         birthday.userInteractionEnabled = false
         email.userInteractionEnabled = false
-    
+        
+        navigationController?.navigationBarHidden = false
     }
     
     init(FBdetails: NSDictionary){
@@ -58,6 +59,13 @@ class SignUpViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        
+        let titleString = ViewController().getLogoTextForFontSize(20, andColor: UIColor.whiteColor())
+        let logoLabel = UILabel(frame: CGRectMake(0, 0, 50, 25))
+        logoLabel.textAlignment = .Center
+        logoLabel.attributedText = titleString
+        
+        navigationItem.titleView = logoLabel
         
         if let first: String = userInfo[userFBFirstName] as? String {
             firstName.text = first
