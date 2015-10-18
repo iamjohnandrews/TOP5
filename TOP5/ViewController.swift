@@ -17,11 +17,17 @@ let userFBemail = "userFBemail"
 let userFBProfilePictureURL = "userFBProfilePictureURL"
 let userFBBirthday = "userFBBirthday"
 
+class Label: UILabel {
+    override func drawTextInRect(rect: CGRect) {
+        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, UIEdgeInsets(top: 2, left: 2, bottom: 1, right: 2)))
+    }
+}
+
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, FBSDKLoginButtonDelegate {
     
     var pageViewController: UIPageViewController!
     var pageTitles: [String]!
-    var genericLabel = UILabel()
+    var genericLabel = Label()
     var index = 0
     internal let fetchedFromFB: NSMutableDictionary = NSMutableDictionary()
     
@@ -46,7 +52,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         let viewControllers = NSArray(object: startVC)
 
         pageViewController.setViewControllers(viewControllers as! [UIViewController], direction: .Forward, animated: true, completion: nil)
-        pageViewController.view.frame = CGRectMake(0, view.frame.height/2 - 150, view.frame.width, view.frame.height/2 + 60)
         addChildViewController(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.didMoveToParentViewController(self)
@@ -63,7 +68,32 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             view.addSubview(fbButton)
             fbButton.readPermissions = ["public_profile", "email", "user_birthday"]
             fbButton.delegate = self
-        
+
+        addAutoLayoutContraints()
+        pageViewController.view.layer.borderWidth = 1
+        pageViewController.view.layer.borderColor = UIColor.orangeColor().CGColor
+        genericLabel.layer.borderColor = UIColor.purpleColor().CGColor
+        genericLabel.layer.borderWidth = 1
+    }
+
+    func addAutoLayoutContraints() {
+        let viewDict = ["numberLabel" : genericLabel, "pageVC" : pageViewController.view, "facebookButton" : facebookLoginButton, "emailButton" : emailLoginButton]
+
+        //lol & number label contraints
+        let hConstrinats = NSLayoutConstraint.constraintsWithVisualFormat("H:|[numberLabel]|", options: .AlignAllCenterX, metrics: nil, views: viewDict)
+        self.view.addConstraints(hConstrinats)
+        let vContraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|-littleAboveCenter-[numberLabel][pageVC]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: ["littleAboveCenter" : self.view.bounds.height/2 - 150], views: viewDict)
+        self.view.addConstraints(vContraint)
+
+        //pageViewController constraints
+        let pageVCHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[pageVC]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: viewDict)
+        self.view.addConstraints(pageVCHorizontalConstraints)
+        let pageVCVerticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[numberLabel][pageVC]-10-[facebookButton]-5-[emailButton]-20-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: viewDict)
+        self.view.addConstraints(pageVCVerticalConstraints)
+
+        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
+
     }
 
     func getLogoTextForFontSize(fontSize: CGFloat, andColor textColor: UIColor) -> NSMutableAttributedString {
@@ -83,18 +113,16 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     
     // MARK: Onboarding
     private func setUpLogoTextOnPage1(pageIndex: Int) {
-        genericLabel.frame = CGRectMake(50, 50, 400, 200)
+        genericLabel.translatesAutoresizingMaskIntoConstraints = false
         genericLabel.textAlignment = NSTextAlignment.Center
         genericLabel.font = genericLabel.font.fontWithSize(80)
-        genericLabel.center = CGPointMake(view.center.x, view.center.y - 100)
         genericLabel.attributedText = getLogoTextForFontSize(80, andColor: UIColor.blackColor())
-        
+
         view.addSubview(genericLabel)
     }
     
     private func setUpOnboardingNumbers(pageIndex: Int) {
-        genericLabel.center = CGPointMake(view.center.x, view.center.y - 100)
-        
+
         let numberString = "1 2 3 4" as NSString
         let numberAttributedString = NSMutableAttributedString(string: numberString as String)
         let greyColorAttribute = [NSForegroundColorAttributeName: UIColor.lightGrayColor()]
