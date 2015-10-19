@@ -59,10 +59,13 @@ public class WelcomeViewController: UIViewController {
     }
 
     private func setupTextView(forBold: String, forNormal: String, inText: String) {
-        let moreDetails = UILabel(frame: CGRectMake(view.frame.origin.x + 20, view.frame.origin.y + 110 , view.frame.size.width - 40, 100))
+
+//        let moreDetails = UILabel(frame: CGRectMake(view.frame.origin.x + 20, view.frame.origin.y + 110 , view.frame.size.width - 40, 100))
+        let moreDetails = UILabel()
+        moreDetails.translatesAutoresizingMaskIntoConstraints = false
         moreDetails.numberOfLines = 0
         moreDetails.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        
+
         moreDetails.layer.borderWidth = 2
         moreDetails.layer.borderColor = UIColor.redColor().CGColor
 
@@ -73,19 +76,29 @@ public class WelcomeViewController: UIViewController {
         topAttributedString.addAttributes(boldAttribute, range: topBaseString.rangeOfString(forBold))
         topAttributedString.addAttributes(regularTopText, range: topBaseString.rangeOfString(forNormal))
         moreDetails.attributedText = topAttributedString;
+        view.addSubview(moreDetails)
 
-        let subDetails = UILabel(frame: CGRectMake(moreDetails.frame.origin.x, view.frame.origin.y + moreDetails.frame.height + 50 , moreDetails.frame.size.width, 170))
+//        let subDetails = UILabel(frame: CGRectMake(moreDetails.frame.origin.x, view.frame.origin.y + moreDetails.frame.height + 50 , moreDetails.frame.size.width, 170))
+        let subDetails = UILabel()
+        subDetails.translatesAutoresizingMaskIntoConstraints = false
         let bottomString = "The will to win, the desire to succeed, the urge to reach your full potential... these are the keys that will unlock the door to personal excellence."
         subDetails.text = bottomString
         subDetails.numberOfLines = 0
         subDetails.lineBreakMode = NSLineBreakMode.ByWordWrapping
         subDetails.font = UIFont.systemFontOfSize(15)
-        
+        view.addSubview(subDetails)
+
         subDetails.layer.borderWidth = 2
         subDetails.layer.borderColor = UIColor.blueColor().CGColor
 
-        view.addSubview(subDetails)
-        view.addSubview(moreDetails)
+
+        let viewDict = ["moreDetails" : moreDetails, "subDetails" : subDetails]
+        let moreDetailsHConstrinat = NSLayoutConstraint.constraintsWithVisualFormat("H:|[moreDetails]|", options: .AlignAllCenterX, metrics: nil, views: viewDict)
+        self.view.addConstraints(moreDetailsHConstrinat)
+        let subDetailsHConstrinat = NSLayoutConstraint.constraintsWithVisualFormat("H:|[subDetails]|", options: .AlignAllCenterX, metrics: nil, views: viewDict)
+        self.view.addConstraints(subDetailsHConstrinat)
+        let vContraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[moreDetails][subDetails]-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: viewDict)
+        self.view.addConstraints(vContraint)
     }
     
     

@@ -92,8 +92,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         self.view.addConstraints(pageVCVerticalConstraints)
 
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-
-
     }
 
     func getLogoTextForFontSize(fontSize: CGFloat, andColor textColor: UIColor) -> NSMutableAttributedString {
