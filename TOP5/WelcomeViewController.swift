@@ -9,6 +9,26 @@
 import Foundation
 import UIKit
 
+class TopAlignedLabel: UILabel {
+    override func drawTextInRect(rect: CGRect) {
+        if let stringText = text {
+            let stringTextAsNSString = stringText as NSString
+            var labelStringSize = stringTextAsNSString.boundingRectWithSize(CGSizeMake(CGRectGetWidth(self.frame), CGFloat.max),
+                options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                attributes: [NSFontAttributeName: font],
+                context: nil).size
+            super.drawTextInRect(CGRectMake(0, 0, CGRectGetWidth(self.frame), ceil(labelStringSize.height)))
+        } else {
+            super.drawTextInRect(rect)
+        }
+    }
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.blackColor().CGColor
+    }
+}
+
 public class WelcomeViewController: UIViewController {
 
     public var pageIndex = 0
@@ -60,7 +80,6 @@ public class WelcomeViewController: UIViewController {
 
     private func setupTextView(forBold: String, forNormal: String, inText: String) {
 
-//        let moreDetails = UILabel(frame: CGRectMake(view.frame.origin.x + 20, view.frame.origin.y + 110 , view.frame.size.width - 40, 100))
         let moreDetails = UILabel()
         moreDetails.translatesAutoresizingMaskIntoConstraints = false
         moreDetails.numberOfLines = 0
@@ -78,8 +97,7 @@ public class WelcomeViewController: UIViewController {
         moreDetails.attributedText = topAttributedString;
         view.addSubview(moreDetails)
 
-//        let subDetails = UILabel(frame: CGRectMake(moreDetails.frame.origin.x, view.frame.origin.y + moreDetails.frame.height + 50 , moreDetails.frame.size.width, 170))
-        let subDetails = UILabel()
+        let subDetails = TopAlignedLabel()
         subDetails.translatesAutoresizingMaskIntoConstraints = false
         let bottomString = "The will to win, the desire to succeed, the urge to reach your full potential... these are the keys that will unlock the door to personal excellence."
         subDetails.text = bottomString
@@ -97,7 +115,7 @@ public class WelcomeViewController: UIViewController {
         self.view.addConstraints(moreDetailsHConstrinat)
         let subDetailsHConstrinat = NSLayoutConstraint.constraintsWithVisualFormat("H:|[subDetails]|", options: .AlignAllCenterX, metrics: nil, views: viewDict)
         self.view.addConstraints(subDetailsHConstrinat)
-        let vContraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[moreDetails][subDetails]-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: viewDict)
+        let vContraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[moreDetails(<=50@750)][subDetails(<=80@500)]-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: viewDict)
         self.view.addConstraints(vContraint)
     }
     
