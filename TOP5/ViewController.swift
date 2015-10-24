@@ -159,7 +159,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        _ = SignUpViewController(FBdetails: fetchedFromFB)        
     }
     
     func returnUserData() {

@@ -35,8 +35,12 @@ class SignUpViewController: UIViewController {
         email.userInteractionEnabled = true
     }
     
-    var userInfo = NSDictionary()
-    
+    @IBAction func continueButtonPressed(sender: AnyObject) {
+    }
+    var userInfo: [String: String]? {
+        return NSUserDefaults.standardUserDefaults().objectForKey(userFBDetails) as? [String: String]
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         drawLines()
@@ -44,13 +48,13 @@ class SignUpViewController: UIViewController {
         lastName.userInteractionEnabled = false
         birthday.userInteractionEnabled = false
         email.userInteractionEnabled = false
-        
+
         navigationController?.navigationBarHidden = false
+        addAutoLayoutContraints()
     }
     
-    init(FBdetails: NSDictionary){
+    init(){
         super.init(nibName: nil, bundle: nil)
-        userInfo = FBdetails
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -66,21 +70,42 @@ class SignUpViewController: UIViewController {
         logoLabel.attributedText = titleString
         
         navigationItem.titleView = logoLabel
-        
-        if let first: String = userInfo[userFBFirstName] as? String {
-            firstName.text = first
-        }
-        if let last: String = userInfo[userFBLastName] as? String {
-            lastName.text = last
-        }
-        if let emailString: String = userInfo[userFBemail] as? String {
-            email.text = emailString
-        }
-        if let bday: String = userInfo[userFBBirthday] as? String {
-            birthday.text = bday
+
+        if let fbUserDetails = userInfo {
+            if let first: String = fbUserDetails[userFBFirstName] {
+                firstName.text = first
+            }
+            if let last: String = fbUserDetails[userFBLastName] {
+                lastName.text = last
+            }
+            if let emailString: String = fbUserDetails[userFBemail] {
+                email.text = emailString
+            }
+            if let bday: String = fbUserDetails[userFBBirthday] {
+                birthday.text = bday
+            }
         }
     }
-    
+
+    func addAutoLayoutContraints() {
+        let viewDict = ["topLabel": topLabel, "firstName": firstName, "lastName": lastName, "birthday": birthday, "maleLabel": maleLabel, "femaleLabel": femaleLabel, "email": email]
+        let metrics = ["distanceBTWLabels": 5, "distanceFromNavBar": 60, "halfScreenWidth": self.view.bounds.width/2]
+
+        let topLabelHConstrinats = NSLayoutConstraint.constraintsWithVisualFormat("H:|[topLabel]|", options: .AlignAllCenterX, metrics: metrics, views: viewDict)
+        self.view.addConstraints(topLabelHConstrinats)
+        let namesHConstrinats = NSLayoutConstraint.constraintsWithVisualFormat("H:|[firstName]-distanceBTWLabels-[lastName]|", options: .AlignAllCenterX, metrics: metrics, views: viewDict)
+        self.view.addConstraints(namesHConstrinats)
+        let emailHConstrinats = NSLayoutConstraint.constraintsWithVisualFormat("H:|[email]|", options: .AlignAllCenterX, metrics: metrics, views: viewDict)
+        self.view.addConstraints(emailHConstrinats)
+        let birthdayHConstrinats = NSLayoutConstraint.constraintsWithVisualFormat("H:|[birthday]|", options: .AlignAllCenterX, metrics: metrics, views: viewDict)
+        self.view.addConstraints(birthdayHConstrinats)
+        let genderHConstrinats = NSLayoutConstraint.constraintsWithVisualFormat("H:|[maleLabel]-distanceBTWLabels-[femaleLabel]-halfScreenWidth-|", options: .AlignAllCenterX, metrics: metrics, views: viewDict)
+        self.view.addConstraints(genderHConstrinats)
+
+        let vContraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|-distanceFromNavBar-[topLabel]-distanceFromNavBar-[firstName]-distanceBTWLabels-[email]-distanceBTWLabels-[birthday]-distanceBTWLabels-[mail]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: metrics, views: viewDict)
+        self.view.addConstraints(vContraint)
+    }
+
     private func drawLines() {
         let lineColor = UIColor.blackColor()
 
