@@ -37,6 +37,10 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBarHidden = true
+
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            self.performSegueWithIdentifier("signUpSegue", sender: self)
+        }
         
         pageTitles = ["page1", "page2", "page3", "page4", "page5"]
 
