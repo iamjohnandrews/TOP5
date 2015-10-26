@@ -227,139 +227,225 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tell us more (2 of 2)." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebJ-IA-wRz">
-                                <rect key="frame" x="20" y="105" width="560" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tell us more (2 of 2)." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebJ-IA-wRz">
+                                <rect key="frame" x="20" y="99" width="560" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Relationship Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjm-ch-CC4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Relationship Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjm-ch-CC4">
                                 <rect key="frame" x="204" y="163" width="192" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ethnicity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjX-Le-Wo3">
-                                <rect key="frame" x="203" y="263" width="192" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Race/Ethnicity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjX-Le-Wo3">
+                                <rect key="frame" x="203" y="255" width="192" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sexual Orientation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exZ-3X-Kru">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sexual Orientation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exZ-3X-Kru">
                                 <rect key="frame" x="204" y="439" width="192" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9H-yA-0Rm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9H-yA-0Rm">
                                 <rect key="frame" x="20" y="552" width="560" height="30"/>
                                 <color key="backgroundColor" red="0.98490274460000005" green="1" blue="0.2889727098" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="NQ4-a3-9Vh"/>
+                                </constraints>
                                 <state key="normal" title="Done ">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="continueButtonPressed:" destination="LYU-GX-H8Z" eventType="touchUpInside" id="IS0-0q-Eay"/>
+                                    <action selector="doneButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="LjO-MG-gSF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liV-pd-G0a">
-                                <rect key="frame" x="54" y="191" width="67" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liV-pd-G0a">
+                                <rect key="frame" x="20" y="191" width="67" height="30"/>
                                 <state key="normal" title="Single">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqX-yI-I8G">
-                                <rect key="frame" x="176" y="191" width="89" height="30"/>
-                                <state key="normal" title="Committed">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <action selector="relationshipButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="nLG-dw-ck9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhb-RM-Hz4">
-                                <rect key="frame" x="335" y="192" width="67" height="30"/>
+                                <rect key="frame" x="352" y="192" width="67" height="30"/>
                                 <state key="normal" title="Married">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="relationshipButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="UQi-pM-xve"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfu-vE-TWB">
-                                <rect key="frame" x="470" y="191" width="67" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfu-vE-TWB">
+                                <rect key="frame" x="513" y="191" width="67" height="30"/>
                                 <state key="normal" title="Divorced">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="relationshipButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="Anq-EX-UB8"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twt-ao-oa7">
-                                <rect key="frame" x="127" y="285" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twt-ao-oa7">
+                                <rect key="frame" x="20" y="282" width="62" height="30"/>
+                                <state key="normal" title="Black">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="wZX-E0-ySy"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alb-OQ-T0J">
-                                <rect key="frame" x="404" y="285" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alb-OQ-T0J">
+                                <rect key="frame" x="518" y="282" width="62" height="30"/>
+                                <state key="normal" title="Asian">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="teU-5R-ng7"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hO3-pV-WRu">
-                                <rect key="frame" x="265" y="285" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hO3-pV-WRu">
+                                <rect key="frame" x="243" y="282" width="115" height="30"/>
+                                <state key="normal" title="Native American">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="VgI-aB-zP1"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0t-El-I3l">
-                                <rect key="frame" x="127" y="335" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0t-El-I3l">
+                                <rect key="frame" x="20" y="332" width="107" height="30"/>
+                                <state key="normal" title="Middle Eastern">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="QNO-Fx-iN2"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-lM-bVd">
-                                <rect key="frame" x="404" y="335" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xp9-lM-bVd">
+                                <rect key="frame" x="518" y="332" width="62" height="30"/>
+                                <state key="normal" title="White">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="BBH-Xa-w1m"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnS-bw-abH">
-                                <rect key="frame" x="265" y="335" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnS-bw-abH">
+                                <rect key="frame" x="243" y="332" width="115" height="30"/>
+                                <state key="normal" title="Pacific Islander">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="EeG-RV-wmc"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHs-4W-YMj">
-                                <rect key="frame" x="127" y="382" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHs-4W-YMj">
+                                <rect key="frame" x="20" y="379" width="62" height="30"/>
+                                <state key="normal" title="Latino">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="Jad-qc-iHF"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDx-ZH-gii">
-                                <rect key="frame" x="404" y="382" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDx-ZH-gii">
+                                <rect key="frame" x="518" y="379" width="62" height="30"/>
+                                <state key="normal" title="Other">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="cEL-ZH-CED"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLp-pi-ABy">
-                                <rect key="frame" x="265" y="382" width="62" height="30"/>
-                                <state key="normal" title="Ethnicity">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLp-pi-ABy">
+                                <rect key="frame" x="243" y="379" width="115" height="30"/>
+                                <state key="normal" title="Multiracial ">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ethnicityButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="Yns-QV-krt"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-5i-kFd">
-                                <rect key="frame" x="54" y="474" width="107" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-5i-kFd">
+                                <rect key="frame" x="20" y="474" width="107" height="30"/>
                                 <state key="normal" title="Heteronormal">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sexOButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="RGA-RW-XkS"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P07-4e-83y">
-                                <rect key="frame" x="430" y="474" width="107" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P07-4e-83y">
+                                <rect key="frame" x="473" y="474" width="107" height="30"/>
                                 <state key="normal" title="Bisexual">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sexOButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="2bt-Fk-A2l"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISW-vg-SmZ">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISW-vg-SmZ">
                                 <rect key="frame" x="243" y="474" width="107" height="30"/>
                                 <state key="normal" title="Gay">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sexOButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="qkW-ty-RoT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqX-yI-I8G">
+                                <rect key="frame" x="167" y="192" width="89" height="30"/>
+                                <state key="normal" title="Committed">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="relationshipButtonPressed:" destination="1ia-P8-aIW" eventType="touchUpInside" id="18U-z5-YcE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hjm-ch-CC4" firstAttribute="leading" secondItem="YjX-Le-Wo3" secondAttribute="leading" id="1SJ-A0-UWn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qfu-vE-TWB" secondAttribute="trailing" constant="43" id="70t-Pb-yku"/>
+                            <constraint firstItem="GLp-pi-ABy" firstAttribute="centerX" secondItem="j5X-bw-mIY" secondAttribute="centerX" id="9rq-Js-ejO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xp9-lM-bVd" secondAttribute="trailing" constant="43" id="GhJ-4E-Bld"/>
+                            <constraint firstItem="hjm-ch-CC4" firstAttribute="top" secondItem="ebJ-IA-wRz" secondAttribute="bottom" constant="25" id="GhS-j5-m7Z"/>
+                            <constraint firstItem="tnS-bw-abH" firstAttribute="centerX" secondItem="j5X-bw-mIY" secondAttribute="centerX" id="Iep-T8-m29"/>
+                            <constraint firstItem="Y9H-yA-0Rm" firstAttribute="trailing" secondItem="j5X-bw-mIY" secondAttribute="trailingMargin" id="Ioy-pM-tdr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="alb-OQ-T0J" secondAttribute="trailing" constant="43" id="ItW-KJ-l3r"/>
+                            <constraint firstItem="Twt-ao-oa7" firstAttribute="leading" secondItem="j5X-bw-mIY" secondAttribute="leadingMargin" id="Lr8-kQ-GHV"/>
+                            <constraint firstItem="ebJ-IA-wRz" firstAttribute="top" secondItem="gCy-yI-q9h" secondAttribute="bottom" constant="35" id="OGl-qv-5Bt"/>
+                            <constraint firstItem="Y9H-yA-0Rm" firstAttribute="leading" secondItem="j5X-bw-mIY" secondAttribute="leadingMargin" id="SUK-3R-MqP"/>
+                            <constraint firstItem="w0t-El-I3l" firstAttribute="leading" secondItem="j5X-bw-mIY" secondAttribute="leadingMargin" id="TW1-Xq-Zkc"/>
+                            <constraint firstItem="QeT-5i-kFd" firstAttribute="leading" secondItem="j5X-bw-mIY" secondAttribute="leadingMargin" id="V16-1S-Q45"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gDx-ZH-gii" secondAttribute="trailing" constant="43" id="d2U-OJ-o6r"/>
+                            <constraint firstItem="hO3-pV-WRu" firstAttribute="centerX" secondItem="j5X-bw-mIY" secondAttribute="centerX" id="eTX-0p-xR1"/>
+                            <constraint firstItem="YjX-Le-Wo3" firstAttribute="leading" secondItem="exZ-3X-Kru" secondAttribute="leading" id="jeM-6o-heU"/>
+                            <constraint firstItem="Y9H-yA-0Rm" firstAttribute="centerX" secondItem="j5X-bw-mIY" secondAttribute="centerX" id="jg3-mj-piu"/>
+                            <constraint firstItem="xHs-4W-YMj" firstAttribute="leading" secondItem="j5X-bw-mIY" secondAttribute="leadingMargin" id="lQX-Bw-rQo"/>
+                            <constraint firstItem="8i2-Gi-Z8X" firstAttribute="top" secondItem="Y9H-yA-0Rm" secondAttribute="bottom" constant="18" id="vuK-ZL-bXZ"/>
+                            <constraint firstItem="liV-pd-G0a" firstAttribute="leading" secondItem="j5X-bw-mIY" secondAttribute="leadingMargin" id="w5O-8C-IPk"/>
+                            <constraint firstItem="ISW-vg-SmZ" firstAttribute="centerX" secondItem="j5X-bw-mIY" secondAttribute="centerX" id="yse-Cv-gaB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P07-4e-83y" secondAttribute="trailing" constant="43" id="ywj-rf-h7m"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="committedLabel" destination="DqX-yI-I8G" id="wGB-Wm-ZPi"/>
+                        <outlet property="divorcedLabel" destination="Qfu-vE-TWB" id="rIz-Ne-LuR"/>
+                        <outlet property="ethnicityLabel" destination="YjX-Le-Wo3" id="DaP-lJ-iQI"/>
+                        <outlet property="marriedLabel" destination="Yhb-RM-Hz4" id="Knh-jh-Xsr"/>
+                        <outlet property="relationshipLabel" destination="hjm-ch-CC4" id="F1N-Ml-qzH"/>
+                        <outlet property="sexOLabel" destination="exZ-3X-Kru" id="wtx-Pa-eOX"/>
+                        <outlet property="singleLabel" destination="liV-pd-G0a" id="Cbd-gG-Rhx"/>
+                        <outlet property="tellMoreLabel" destination="ebJ-IA-wRz" id="7XG-iy-Dzt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEX-li-jVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
